@@ -53,3 +53,6 @@ def userprofile(request):
     
     
     return render(request,'neighbour/profile.html')
+
+def community(request):
+     return render(request,'neighbour/community.html')

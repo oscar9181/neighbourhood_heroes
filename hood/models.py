@@ -44,11 +44,11 @@ class Profile(models.Model):
 def __str__(self):
         return f'{self.user.username} Profile'
     
-class Business(models.Model):
-    name = models.CharField(max_length=200)
-    image = CloudinaryField('image')
-    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
-    email =  models.CharField(max_length=60)
-    phone_no = models.IntegerField(blank=True)
-    neighbourhood = models.ForeignKey(NeighbourHood,on_delete=models.CASCADE, related_name='business',null=True)
-    post_date = models.DateTimeField(auto_now=True)
+# class Business(models.Model):
+#     name = models.CharField(max_length=200)
+#     image = CloudinaryField('image')
+#     user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+#     email =  models.CharField(max_length=60)
+#     phone_no = models.IntegerField(blank=True)
+#     neighbourhood = models.ForeignKey(NeighbourHood,on_delete=models.CASCADE, related_name='business',null=True)
+#     post_date = models.DateTimeField(auto_now=True)
