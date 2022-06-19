@@ -48,3 +48,8 @@ def loginpage (request):
 def logoutUser(request):
     logout(request)
     return redirect('login')
+
+def userprofile(request):
+    
+    
+    return render(request,'neighbour/profile.html')

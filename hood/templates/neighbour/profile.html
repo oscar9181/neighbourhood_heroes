@@ -1,0 +1,23 @@
+{% extends 'neighbour/home.html' %}
+{% block content %}
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+
+<div class="media">
+    <div class='d-sm-flex'>
+    <img  class="rounded-circle" src="{{ user.profile.profile_picture.url }}" style="height: 180px;width: 180px;">
+    <div class="media-body">
+      <h2 class="profile-heading">{{ user.username }}</h2>
+        <p class="text-secondary">{{ user.profile.bio }}</p>
+
+        <h3>PERSONAL INFORMATION</h3>
+        <p class="fas fa-envelope">{{ user.email }}</p>
+        <br>
+        <p class="fas fa-phone number">{{ user.profile.phone_no }}</p>
+        <br>
+        <p class="fas fa-home">{{ user.profile.neighbourhood }}</p>
+    </div>
+  </div>
+  </div>
+{% endblock content %}
