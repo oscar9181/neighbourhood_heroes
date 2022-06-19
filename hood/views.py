@@ -62,9 +62,10 @@ def community(request):
     form = NeighbourForm(request.POST,request.FILES)
     if request.method == 'POST':
             if form.is_valid():
-                hood = form.save(commit=False)
+                hood = form.save()
                 hood.user = request.user
                 hood.save()
+                
                 return redirect ('home')
         
     
