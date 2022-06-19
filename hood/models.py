@@ -52,3 +52,35 @@ def __str__(self):
 #     phone_no = models.IntegerField(blank=True)
 #     neighbourhood = models.ForeignKey(NeighbourHood,on_delete=models.CASCADE, related_name='business',null=True)
 #     post_date = models.DateTimeField(auto_now=True)
+
+
+class Business(models.Model):
+    name =  models.CharField(max_length=100)
+    business_owner = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
+    email = models.EmailField()
+    business_image = CloudinaryField(null=True)
+    business_location = models.ForeignKey(NeighbourHood,on_delete=models.CASCADE,null=True)
+    location = models.CharField(max_length=100,null=True,blank=True)
+
+    def save_business(self):
+        self.save()
+
+    @classmethod
+    def delete_business(cls, id):
+        cls.objects.filter(id).delete()
+
+    @classmethod
+    def update_business(cls, id, new_name):
+        cls.objects.filter(id=id).update(name=new_name)
+
+    @classmethod
+    def search_by_title(cls,search_term):
+        businesses = cls.objects.filter(name__icontains=search_term)
+        return businesses
+
+    def __str__(self):
+        return self.name
+
+
+    def get_absolute_url(self):
+        return reverse('business-detail',kwargs={'pk':self.pk})
