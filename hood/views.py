@@ -12,7 +12,7 @@ from django.contrib import messages
 # Create your views here.
 
 def home (request):
-    hoods=NeighbourHood.objects.all.order_by('-post_date')
+    hoods=NeighbourHood.objects.all()
     
     return render(request,'neighbour/home.html',{'hoods':hoods})
 
@@ -72,3 +72,16 @@ def community(request):
                 pass
     
     return render(request,'neighbour/community.html',{'form':form})
+
+def update(request):
+    
+        form=ProfileForm(request.POST,request.FILES)
+        if request.method == 'POST':
+            details=form.save()
+            details.user = request.user
+            details.save()
+            
+            return redirect('home')
+        else:
+            form=ProfileForm
+        return render(request,'neighbour/updateprofile.html',{'form':form})
