@@ -1,7 +1,10 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
+
+from hood.models import NeighbourHood
 from .forms import CreateUserForm
 from django.contrib.auth import authenticate,login,logout
+from .forms import NeighbourForm,ProfileForm
 
 
 from django.contrib import messages
@@ -55,4 +58,15 @@ def userprofile(request):
     return render(request,'neighbour/profile.html')
 
 def community(request):
-     return render(request,'neighbour/community.html')
+    current_user = (request.user)
+    form = NeighbourForm(request.POST,request.FILES)
+    if request.method == 'POST':
+            if form.is_valid():
+                hood = form.save(commit=False)
+                hood.user = request.user
+                hood.save()
+                return redirect ('home')
+            else:
+                 form = ProfileForm()
+    
+    return render(request,'neighbour/community.html',{'form':form})
