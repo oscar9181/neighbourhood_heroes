@@ -66,7 +66,6 @@ def community(request):
                 hood.user = request.user
                 hood.save()
                 return redirect ('home')
-            else:
-                 form = ProfileForm()
+        
     
     return render(request,'neighbour/community.html',{'form':form})
