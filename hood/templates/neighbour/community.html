@@ -1,11 +1,11 @@
 {% extends 'neighbour/home.html' %}
 {% block content %}
-<form method="POST" action="" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.as_p}}
-
-
-    <input type="submit" name="create neighbourhood">
-  
+{% load bootstrap5 %}
+<form style="color: #FFFFFF;" action="{% url 'community'%}" method="post" enctype="multipart/form-data">
+    {% csrf_token%} {% bootstrap_form form %}
+    <div class="form-group text-center">
+        <input type="submit" class="btn btn-primary hood-btn" value="Create Community">
+    </div>
+    <input type="hidden" name="next" value="{{next}}">
 </form>
 {% endblock content %}
