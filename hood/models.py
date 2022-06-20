@@ -35,10 +35,10 @@ class NeighbourHood(models.Model):
     
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    profile_picture = CloudinaryField('image')
+    profile_picture = CloudinaryField('image',default='default.jpg')
     bio = models.CharField(max_length=250)
     email =  models.CharField(max_length=60)
-    phone_no = models.IntegerField(blank=True)
+    phone_no = models.IntegerField(blank=True,null=True)
     neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.SET_NULL, null=True, related_name='neighbour', blank=True)
     post_date = models.DateTimeField(auto_now=True)
     
