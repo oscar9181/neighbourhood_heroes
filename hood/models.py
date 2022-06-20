@@ -42,6 +42,8 @@ class Profile(models.Model):
     neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.SET_NULL, null=True, related_name='neighbour', blank=True)
     post_date = models.DateTimeField(auto_now=True)
     
+    
+    
 def __str__(self):
         return f'{self.user.username} Profile'
     

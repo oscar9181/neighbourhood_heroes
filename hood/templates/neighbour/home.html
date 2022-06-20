@@ -12,8 +12,9 @@
 
     <title>Document</title>
     <style>
+
      body{
-       background-color: #9A616D;
+       background-color:aliceblue;
      }
 
     </style>
@@ -50,10 +51,11 @@
           </li>
           
         </ul>
-        <span class="navbar-text">
-          Navbar text with an inline element
-        </span>
-      </div>
+        
+      <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search'%}">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
     </div>
   </nav>
 
@@ -73,10 +75,11 @@
            <p>No image</p>
 
             {% endif %}
+            <p>{{hood.name}}</p>
             <p>{{hood.description}}</p>
           {% endfor %}
       
     {% endblock content %}
-    
+  
 </body>
 </html>

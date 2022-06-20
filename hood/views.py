@@ -1,3 +1,4 @@
+from ast import If
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
 
@@ -40,7 +41,7 @@ def loginpage (request):
         user = authenticate(username=username,password=password)
         if user is not None:
             login(request,user)
-            return redirect('home')
+            return redirect('update')
         else:
             messages.info(request,'Username or Password is incorrect')
              
@@ -75,13 +76,24 @@ def community(request):
 
 def update(request):
     
-        form=ProfileForm(request.POST,request.FILES)
         if request.method == 'POST':
-            details=form.save()
-            details.user = request.user
-            details.save()
+            form=ProfileForm(request.POST,request.FILES,instance=request.user.profile)
+            if form.is_valid():
+                form.save()
+
+            
+            
             
             return redirect('home')
         else:
             form=ProfileForm
         return render(request,'neighbour/updateprofile.html',{'form':form})
+    
+def search(request):
+    if request.method == 'GET':
+        search=request.GET.get('search')
+        if search:
+            form=NeighbourHood.objects.filter(name__icontains=search)
+            
+    return render(request, 'neighbour/search.html',{'form':form})
+    
