@@ -1,6 +1,6 @@
 ## Kwetu app
 
-### Developer: Oscar Okola
+### Developer: Oscar Okola and Marvin Kimathi
 
 ## Description
 This is a django application  that allows you to know what is happening in neighbourhood
