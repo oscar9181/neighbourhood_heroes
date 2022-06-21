@@ -8,7 +8,7 @@ This is a django application  that allows you to know what is happening in neigh
 
 
 ## User stories
-  ##### As a user:
+    ##### As a user:
         
     +  Sign in with the application to start using.
     +  Set up a profile about me and a general location and my neighborhood name.
