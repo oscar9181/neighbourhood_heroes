@@ -1,16 +1,16 @@
 {% extends 'neighbour/home.html' %}
 {% block content %}
 {% load bootstrap5 %}
-<form class="form" style="color: black;" action="{% url 'update'%}" method="post" enctype="multipart/form-data">
+<form class="bizz" style="color: black;" action="{% url 'update'%}" method="post" enctype="multipart/form-data">
     {% csrf_token%} {% bootstrap_form form %}
     <div class="form-group text-center">
-        <input type="submit" class="btn btn-primary hood-btn" value="Create Profile">
+        <input type="submit" class="btn btn-primary hood-btn" value="Post Business">
     </div>
     <input type="hidden" name="next" value="{{next}}">
 </form>
 
 <style>
-    .form{
+    .bizz{
     margin-right: auto;  
     margin-left: auto;
     width: 30% !important;
@@ -18,5 +18,5 @@
     }
     
     </style>
-    
+
 {% endblock content %}

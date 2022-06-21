@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
-from.models import User,NeighbourHood,Profile
+from.models import Business, User,NeighbourHood,Profile
 from django import forms
 
 
@@ -18,4 +18,8 @@ class NeighbourForm(forms.ModelForm):
     class Meta:
         model = NeighbourHood
         fields=['name','location','description','image','health_center','health_contact','health_email','police_center','police_contact','police_email']         
- 
+
+class BusinessForm(forms.ModelForm):
+    class Meta:
+        model = Business
+        fields = '__all__'

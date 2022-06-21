@@ -16,13 +16,22 @@
      body{
        background-color:aliceblue;
      }
+     .nav-item{
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+      
+     }
 
     </style>
 </head>
 <body>
 
 
-  <nav class="navbar navbar-expand-lg bg-transparent">
+  <nav class="navbar navbar-expand-lg bg-dark" style="padding: 0%;">
     <div class="container-fluid">
       <a class="fas fa-home" aria-current="page" href="{% url 'home' %}">Home</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,18 +39,26 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'community' %}">Create Community</a>
+            <a class="nav-link" href="{% url 'community' %}">Create Hood</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+            <a class="nav-link"   href="{% url 'profile' %}">Profile</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link"   href="{% url 'business' %}">Business</a>
           </li>
           
           
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
           </li>
+           
 
+          {% else %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'login' %}">Login</a>
           </li>
@@ -51,11 +68,8 @@
           </li>
           
         </ul>
-        
-      <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search'%}">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+        {% endif %}
+      
     </div>
   </nav>
 
@@ -64,7 +78,7 @@
       {% block content %}
       <div class="container-fluid">
 
-        <strong>Sites of the day</strong>
+        <strong><h1>KWETU HOOD</h1></strong>
         
       <div class="row px-5" style="display:flex;flex-wrap:wrap">
         {% for hood in hoods %}
@@ -72,11 +86,14 @@
             {% if hood.image %}
 
            <img src="{{ hood.image.url }}" alt="">
-           <p>No image</p>
+          
 
             {% endif %}
             <p>{{hood.name}}</p>
             <p>{{hood.description}}</p>
+            <p>{{hood.date}}</p>
+            <a href="{% url 'hood' hood.id %}" class="btn btn-success">Join</a>
+          </div>
           {% endfor %}
       
     {% endblock content %}
