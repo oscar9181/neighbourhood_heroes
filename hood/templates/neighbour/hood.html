@@ -2,15 +2,15 @@
 {% block content %}
 {% load bootstrap5 %}
 <div class="row px-5" style="display:flex;flex-wrap:wrap">
-    {% for hood in hoods %}
+    {% for business in businesses %}
       <div class="card" style="width: 24rem;">
-        {% if hood.image %}
 
-       <img src="{{ hood.image.url }}" alt="">
+
+       <img src="{{  business.image.url }}" alt="">
       
 
-        {% endif %}
-        <p>{{hood.health_center}}</p>
+        
+        <p>{{business.email}}</p>
         <p>{{hood.description}}</p>
         <p>{{hood.date}}</p>
 

@@ -1,4 +1,4 @@
-from ast import If
+
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
 
@@ -98,21 +98,26 @@ def search(request):
             return render(request, 'neighbour/search.html',{'hoods':hoods})
         
         
-def view(request,pk):
-    form = NeighbourHood .objects.get(id=pk)
-    return render(request,'neighbour/hood.html',{'form' : form})
+# def view(request,pk):
+#     form = NeighbourHood .objects.get(id=pk)
+#     return render(request,'neighbour/hood.html',{'form' : form})
 
 def bizz(request):
-    current_user = request.user
-    form = BusinessForm(request.POST,request.FILES)
+   
     if request.method == 'POST':
-            if form.is_valid():
-                biz = form.save(commit=False)
-                biz.user = request.user
-                biz.save()
+         form = BusinessForm(request.POST,request.FILES)
+         if form.is_valid():
+                form.save()
                 
-                return redirect ('home')
+                return redirect ('search')
     
+    else:
+        form=BusinessForm()
     return render(request,'neighbour/business.html',{'form':form})
+
+
+def business_details(request):
+    business=Business.objects.all()
+    return render(request, 'neighbour/hood.html',{'business':business})
 
 
