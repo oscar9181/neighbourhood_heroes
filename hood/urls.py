@@ -1,6 +1,6 @@
 from django.urls import  URLPattern, path
 
-from hood.views import loginpage
+from hood.views import loginpage, BusinessCreateView, BusinessDeleteView, BusinessDetailView, BusinessListView, BusinessUpdateView
 from . import views
 
 urlpatterns = [
@@ -14,5 +14,14 @@ urlpatterns = [
     path('hood/',views.business_details,name='hood'),       
     path('update/',views.update,name='update'),
     path('search/',views.search,name='search'),
+<<<<<<< HEAD
     path('business/',views.bizz,name='business'),
+=======
+    path('',BusinessListView.as_view(),name='home'),
+    path('business/<int:pk>/',BusinessDetailView.as_view(), name='business-detail'),
+    path('business/new/', BusinessCreateView.as_view(), name='business-create'),
+    path('business/<int:pk>/update/',BusinessUpdateView.as_view(), name='business-update'),
+    path('business/<int:pk>/delete/',BusinessDeleteView.as_view(),name='business-delete'), 
+
+>>>>>>> d48b1df3f89cf43bfe8cd3a131b2ca78528a3c73
 ]
