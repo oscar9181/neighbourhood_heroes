@@ -1,15 +1,13 @@
 
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
-<<<<<<< HEAD
+
 
 from hood.models import NeighbourHood,Business
-=======
 from .models import Business
 from django.views.generic  import ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from hood.models import NeighbourHood
->>>>>>> d48b1df3f89cf43bfe8cd3a131b2ca78528a3c73
 from .forms import CreateUserForm
 from django.contrib.auth import authenticate,login,logout
 from .forms import NeighbourForm,ProfileForm,BusinessForm
@@ -101,7 +99,6 @@ def search(request):
     if request.method == 'GET':
         search=request.GET.get('search')
         if search:
-<<<<<<< HEAD
             hoods=NeighbourHood.objects.filter(name__icontains=search)
             return render(request, 'neighbour/search.html',{'hoods':hoods})
         
@@ -125,15 +122,13 @@ def bizz(request):
 
 
 def business_details(request):
+    
     business=Business.objects.all()
     return render(request, 'neighbour/hood.html',{'business':business})
 
 
-=======
-            form=NeighbourHood.objects.filter(name__icontains=search)
-            
-    return render(request, 'neighbour/search.html',{'form':form})
 
+            
 
 class BusinessListView(LoginRequiredMixin,ListView):
     model = Business
@@ -180,4 +175,3 @@ class BusinessDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
         if self.request.user == business.business_owner:
             return True
         return False
->>>>>>> d48b1df3f89cf43bfe8cd3a131b2ca78528a3c73

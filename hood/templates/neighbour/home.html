@@ -48,11 +48,7 @@
             <a class="nav-link"   href="{% url 'profile' %}">Profile</a>
           </li>
           
-          <li class="nav-item">
-            <a class="nav-link"   href="{% url 'business' %}">Business</a>
-          </li>
-          
-          
+
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
           </li>
@@ -92,7 +88,10 @@
             <p>{{hood.name}}</p>
             <p>{{hood.description}}</p>
             <p>{{hood.date}}</p>
-            <a href="{% url 'hood' %}" class="btn btn-success">Join</a>
+            <p>{{hood.}}</p>
+
+
+            <a href="{% url 'hood' %}" class="">Join</a>
           </div>
           {% endfor %}
       
